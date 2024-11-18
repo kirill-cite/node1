@@ -32,8 +32,10 @@ export class TSVFileReader implements FileReader {
       cityName,
       cityLatitude,
       cityLongitude,
+      cityZoom,
       offerLatitude,
       offerLongitude,
+      offerZoom,
       isFavorite,
       isPremium,
       rating,
@@ -56,7 +58,7 @@ export class TSVFileReader implements FileReader {
       title,
       description,
       date: Date.now(),
-      city: this.parseCity(cityName, cityLatitude, cityLongitude),
+      city: this.parseCity(cityName, cityLatitude, cityLongitude, cityZoom),
       previewImage,
       images: images.split(';'),
       isFavorite: this.parseBoolean(isFavorite),
@@ -69,21 +71,22 @@ export class TSVFileReader implements FileReader {
       goods: goods.split(','),
       host: this.parseUser(userName, password, email, isPro, avatar),
       comments: parseInt(comments, 10),
-      location: this.parseLocation(offerLatitude, offerLongitude)
+      location: this.parseLocation(offerLatitude, offerLongitude, offerZoom)
     };
   }
 
-  private parseCity(cityName: string, cityLatitude: string, cityLongitude: string): City {
+  private parseCity(cityName: string, cityLatitude: string, cityLongitude: string, zoom: string): City {
     return {
       name: cityName,
-      location:this.parseLocation(cityLatitude, cityLongitude)
+      location:this.parseLocation(cityLatitude, cityLongitude, zoom)
     };
   }
 
-  private parseLocation(latitude: string, longitude: string): Location{
+  private parseLocation(latitude: string, longitude: string, zoom: string): Location{
     return {
       latitude: parseFloat(latitude),
-      longitude: parseFloat(longitude)
+      longitude: parseFloat(longitude),
+      zoom: parseInt(zoom, 10),
     };
   }
 
