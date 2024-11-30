@@ -36,30 +36,39 @@ export class TSVOfferGenerator implements OfferGenerator {
     };
     const comments = generateRandomValue(0, Setting.MAX_COMMENTS_VALUE);
     const location = {
-      latitude: faker.location.latitude,
-      longitude: faker.location.longitude,
+      latitude: faker.location.latitude(),
+      longitude: faker.location.longitude(),
       zoom: Setting.OFFER_LOCATION_ZOOM
     };
 
     return [
       id,
       title,
-      description,
-      date,
-      city,
-      previewImage,
-      images,
+      type,
+      price,
+      city.name,
+      city.location.latitude,
+      city.location.longitude,
+      city.location.zoom,
+      location.latitude,
+      location.longitude,
+      location.zoom,
       isFavorite,
       isPremium,
       rating,
-      type,
+      previewImage,
+      images,
+      description,
       bedrooms,
       maxAdults,
-      price,
       goods,
-      host,
+      host.name,
+      host.password,
+      host.email,
+      host.isPro,
+      host.avatar,
       comments,
-      location
+      date
     ].join('\t');
   }
 }
