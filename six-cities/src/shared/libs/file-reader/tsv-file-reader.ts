@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import { FileReader } from './file-reader.interface.js';
 import { Offer, City, User, Location } from '../../types/index.js';
 
+import dayjs from 'dayjs';
+
 export class TSVFileReader implements FileReader {
   private rawData = '';
 
@@ -50,15 +52,16 @@ export class TSVFileReader implements FileReader {
       email,
       isPro,
       avatar,
-      comments
+      comments,
+      date
     ] = line.split('\t');
 
     return {
       id,
       title,
       description,
-      date: Date.now(),
       city: this.parseCity(cityName, cityLatitude, cityLongitude, cityZoom),
+      date: (date) ? date : dayjs().toISOString(),
       previewImage,
       images: images.split(';'),
       isFavorite: this.parseBoolean(isFavorite),
