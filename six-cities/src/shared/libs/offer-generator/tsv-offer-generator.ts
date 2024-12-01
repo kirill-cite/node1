@@ -12,10 +12,10 @@ export class TSVOfferGenerator implements OfferGenerator {
   ){}
 
   generate(): string {
-    const id = faker.database.mongodbObjectId;
+    const id = faker.database.mongodbObjectId();
     const title = getRandomItem(this.mockData.titles);
     const description = getRandomItem(this.mockData.descriptions);
-    const date = dayjs(faker.date.recent()).toISOString;
+    const date = dayjs(faker.date.recent()).toISOString();
     const city = getRandomItem(Object.values(SixCities));
     const previewImage = getRandomItem(this.mockData.previewImages);
     const images = getRandomItems(this.mockData.images).join(';');

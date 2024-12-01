@@ -64,7 +64,7 @@ const Setting = {
 } as const;
 
 const OFFER_TYPES = ['apartment', 'house', 'room', 'hotel'];
-const OFFER_GOODS = ['Breakfast, Air conditioning', 'Laptop friendly workspace', 'Baby seat', 'Washer', 'Towels', 'Fridge'];
+const OFFER_GOODS = ['Breakfast', 'Air conditioning', 'Laptop friendly workspace', 'Baby seat', 'Washer', 'Towels', 'Fridge'];
 
 export {
   SixCities,

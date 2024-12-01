@@ -1,5 +1,3 @@
-import { readFileSync } from 'node:fs';
-
 import { FileReader } from './file-reader.interface.js';
 import { Offer, City, User, Location } from '../../types/index.js';
 
@@ -108,7 +106,7 @@ export class TSVFileReader implements FileReader {
   }
 
   public read(): void {
-    this.rawData = readFileSync(this.filename, 'utf-8');
+
   }
 
   public toArray(): Offer[] {
