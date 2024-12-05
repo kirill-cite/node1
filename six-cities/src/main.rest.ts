@@ -11,7 +11,7 @@ async function bootstrap() {
   container.bind<RestApplication>(Component.RestApplication).to(RestApplication).inSingletonScope();
   container.bind<Logger>(Component.Logger).to(PinoLogger).inSingletonScope();
   container.bind<Config<RestSchema>>(Component.Config).to(RestConfig).inSingletonScope();
-
+  console.log(2);
   const application = container.get<RestApplication>(Component.RestApplication);
   await application.init();
 }
